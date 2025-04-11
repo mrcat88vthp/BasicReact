@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">    
+        <title>React Element và React DOM</title>
+    </head>
+    <body>
+        <!--Target Container-->
+        <div id="divRoot">
+            <!--React Library-->
+            <script type="text/javascript" src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+            <!--React DOM-->
+            <script type="text/javascript" src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+            <script>
+                const section = React.createElement(
+                    "section",
+                    { id: "cat_1"},
+                    React.createElement("h1", null, "Baked Salmon"),
+                    React.createElement(
+                        "ul", 
+                        { className: "cat_1_list" },
+                        React.createElement("li", null, "2 lb salmon fillet"),
+                        React.createElement("li", null, "1 lemon, sliced"),
+                        React.createElement("li", null, "1 tbsp olive oil"),
+                        React.createElement("li", null, "Salt and pepper to taste"),
+                        React.createElement("li", null, "Fresh dill for garnish")
+                    ),
+                    React.createElement(
+                        "section",
+                        { className: "instructions" },
+                        React.createElement("h2", null, "Cooking Instructions"),
+                        React.createElement("p", null, "Preheat oven to 400°F (200°C)."),   
+                        React.createElement("p", null, "Place salmon on a baking sheet lined with parchment paper."),
+                        React.createElement("p", null, "Drizzle with olive oil and season with salt and pepper."), 
+                        React.createElement("p", null, "Top with lemon slices and fresh dill."),
+                        React.createElement("p", null, "Bake for 15-20 minutes or until salmon is cooked through."),
+                        React.createElement(
+                            "p",
+                            null,
+                            "Remove from oven"
+                        )
+                    )
+                );
+                
+
+                ReactDOM.render(
+                    [section], 
+                    document.getElementById('divRoot')
+                );
+
+                
+            </script>
+        </div>
+    </body>
+</html>

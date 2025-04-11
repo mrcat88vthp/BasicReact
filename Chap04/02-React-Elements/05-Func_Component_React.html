@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">    
+        <title>React Element và React DOM</title>
+    </head>
+    <body>
+        <!--Target Container-->
+        <div id="divRoot">
+            <!--React Library-->
+            <script type="text/javascript" src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+            <!--React DOM-->
+            <script type="text/javascript" src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+            <script>
+                const li = [
+                    "2 lb salmon fillet",
+                    "1 lemon, sliced",
+                    "1 tbsp olive oil",
+                    "Salt and pepper to taste",
+                    "Fresh dill for garnish"
+                ];
+
+                const instructions = [
+                    "Preheat oven to 400°F (200°C).",
+                    "Place salmon on a baking sheet lined with parchment paper.",
+                    "Drizzle with olive oil and season with salt and pepper.",
+                    "Top with lemon slices and fresh dill.",
+                    "Bake for 15-20 minutes or until salmon is cooked through.",
+                    "Remove from oven"
+                ];
+                
+                function Tao_DS_LI(props){
+                    console.log(props.abc.length);
+                    return React.createElement(
+                        "ul",
+                        {className: "cat_1_list"},
+                        props.efg.map((item, index) => React.createElement("li", {key: index}, item))
+                    );
+                }
+                
+                // Hoặc có thể viết như sau:
+                /*
+                function Tao_DS_LI({items}){
+                    return React.createElement(
+                        "ul",
+                        {className: "cat_1_list"},
+                        items.map((item, index) => React.createElement("li", {key: index}, item))
+                    );
+                }
+                */
+
+                ReactDOM.render(
+                    React.createElement(
+                        Tao_DS_LI, {abc: li, efg: li}
+                    ), 
+                    document.getElementById('divRoot')
+                );
+
+                
+            </script>
+        </div>
+    </body>
+</html>

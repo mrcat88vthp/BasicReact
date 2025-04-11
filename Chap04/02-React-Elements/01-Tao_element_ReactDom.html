@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">    
+        <title>React Element và React DOM</title>
+    </head>
+    <body>
+        <!--Target Container-->
+        <div id="divRoot">
+            <!--React Library-->
+            <script type="text/javascript" src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+            <!--React DOM-->
+            <script type="text/javascript" src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+            <script>
+                const dish = React.createElement("h1", null, "Baked Salmon");
+                const dessert = React.createElement("h2", null, "Chocolate Cake");
+                const ul = React.createElement("ul", null, 
+                    React.createElement("li", null, "2 lb salmon fillet"),
+                    React.createElement("li", null, "1 lemon, sliced"),
+                    React.createElement("li", null, "1 tbsp olive oil"),
+                    React.createElement("li", null, "Salt and pepper to taste"),
+                    React.createElement("li", null, "Fresh dill for garnish")                    
+                );
+
+                ReactDOM.render(
+                    [dish,dessert, ul], 
+                    document.getElementById('divRoot')
+                );
+
+                console.log('dish', dish);
+                console.log('ul', ul);
+            </script>
+        </div>
+    </body>
+</html>
