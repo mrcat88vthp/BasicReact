@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React Fragments</title>
+</head>
+
+<body>
+    <!--Target Container-->
+    <div id="divRoot">
+    </div>
+    <!--React Library-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--React DOM-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script type="text/babel">
+        function Cat({ name }) {
+            return (
+                //<React.Fragment>
+                <>
+                    <h1>The cat's name is {name}</h1>
+                    <p>It is a very cute cat</p>
+                </>
+                //</React.Fragment>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('divRoot')).render(
+            <Cat name="Jungle" />
+        )
+    </script>
+</body>
+
+</html>

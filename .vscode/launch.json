@@ -5,10 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "type": "node",
             "request": "launch",
-            "name": "Open 01-Cong_thuc_nau_an.html",
-            "file": "e:\\EBooks\\ReactJS\\BasicReact\\Chap04\\03-React-Components\\01-Cong_thuc_nau_an.html"
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\Chap06\\src\\components\\App.js"
         }
     ]
 }
