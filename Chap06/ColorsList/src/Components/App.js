@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import colorData from "../data/color-data.json";
 import ColorList from "./ColorList";
 import AddColorForm from "./AddColorForm";
+import AddColorForm_V2 from "./AddColorForm_V2";
 
 export default function App() {
     const [colors, setColors] = useState(colorData);
@@ -26,6 +27,7 @@ export default function App() {
     return (
         <>
             <AddColorForm onNewColor={addColor} />
+            <AddColorForm_V2 onNewColor={addColor} />
 
             <ColorList
                 colors={colors}
