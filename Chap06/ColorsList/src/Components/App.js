@@ -3,6 +3,8 @@ import colorData from "../data/color-data.json";
 import ColorList from "./ColorList";
 import AddColorForm from "./AddColorForm";
 import AddColorForm_V2 from "./AddColorForm_V2";
+import AddColorForm_V3 from "./AddColorForm_V3";
+import { v4 } from "uuid";
 
 export default function App() {
     const [colors, setColors] = useState(colorData);
@@ -21,13 +23,23 @@ export default function App() {
     };
 
     const addColor = (title, color) => {
-        alert(`Color added: ${title} - ${color}`);
+        const newColors = [
+            ...colors,
+            {
+                id: v4(),
+                title,
+                color,
+                rating: 0
+            }
+        ];
+        setColors(newColors);
     }
 
     return (
         <>
             <AddColorForm onNewColor={addColor} />
             <AddColorForm_V2 onNewColor={addColor} />
+            <AddColorForm_V3 onNewColor={addColor} />
 
             <ColorList
                 colors={colors}
