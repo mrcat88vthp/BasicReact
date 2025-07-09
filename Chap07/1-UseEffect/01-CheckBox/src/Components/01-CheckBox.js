@@ -5,8 +5,9 @@ function CheckBox(){
     
     useEffect(() => {
         const timer = setTimeout(() => {
-            alert(`Checked: ${checked}`);
-        });
+            //alert(`Checked cc: ${checked}`);
+            console.log(`Checked: ${checked}`);
+        }, 0);
         
         // Cleanup function to clear the timer
         return () => clearTimeout(timer);    
