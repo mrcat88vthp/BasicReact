@@ -13,7 +13,6 @@ function useAnyKeyToRender() {
     }, []);
 }
 
-
 const arr_out_func = [1, 2, 3];
 
 export default function Keys(){

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React in HTML</title>
+    <!-- React và ReactDOM từ CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel để hỗ trợ JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="divRoot"></div>
+
+    <!-- Code React viết bằng JSX -->
+    <script type="text/babel">
+        const { useEffect, useLayoutEffect } = React;
+
+        function App() {
+            useEffect(() => {console.log('useEffect called'); });
+            useLayoutEffect(() => {console.log('useLayoutEffect called'); });
+
+            return (
+                <div style={{ fontFamily: 'Arial', textAlign: 'center', marginTop: '50px' }}>
+                <h1>Hello React in HTML!</h1>
+                </div>
+            );
+        }    
+
+        const root = ReactDOM.createRoot(document.getElementById('divRoot'));
+        root.render(
+            <App />
+        );  
+    </script>
+  </body>
+</html>
