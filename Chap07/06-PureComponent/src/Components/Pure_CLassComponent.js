@@ -8,3 +8,5 @@ class Pure_Component extends React.PureComponent{
         );
     };  
 }
+
+export default Pure_Component;
