@@ -27184,6 +27184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MymemoCom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MymemoCom */ "./src/Components/MymemoCom.js");
 /* harmony import */ var _Cat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cat */ "./src/Components/Cat.js");
+/* harmony import */ var _Pure_CLassComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pure_CLassComponent */ "./src/Components/Pure_CLassComponent.js");
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
@@ -27197,6 +27198,14 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
+var Pure_Cat = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Cat__WEBPACK_IMPORTED_MODULE_2__["default"], function (prevProps, nextProps) {
+  return prevProps.name === nextProps.name;
+});
+var Pure_Cat_v2 = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Cat__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var meow = function meow(name) {
+  console.log("".concat(name, " has meowed"));
+};
 function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
@@ -27206,13 +27215,32 @@ function App() {
     _useState4 = _slicedToArray(_useState3, 2),
     cats = _useState4[0],
     setCats = _useState4[1];
+  var meowMap = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var result = {};
+    cats.map(function (name, i) {
+      result[name] = function () {
+        return meow(name);
+      };
+    });
+    return result;
+  }, [cats, meow]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MymemoCom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    name: count
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MymemoCom__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: "Mr Cat"
   }), cats.map(function (name, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cat__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      key: i,
-      name: name
-    });
+    return (
+      /*#__PURE__*/
+      //return Cat key={i} name={name} />
+      //return <Pure_Cat key={i} name = {name} meow={meow({name})} />                    
+      react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Pure_Cat_v2, {
+        key: 'Pure_Cat_v2' + i,
+        name: name,
+        meow: meowMap[name]
+      })
+    );
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pure_CLassComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    name: "Mr Cat"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: function onClick() {
       return setCount(count + 1);
@@ -27240,7 +27268,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-var Temp = function Temp(_ref) {
+var Cat = function Cat(_ref) {
   var name = _ref.name,
     _ref$meow = _ref.meow,
     meow = _ref$meow === void 0 ? function (f) {
@@ -27249,9 +27277,6 @@ var Temp = function Temp(_ref) {
   console.log("rendering ".concat(name));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name);
 };
-var Cat = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(Temp, function (prevProps, nextProps) {
-  return prevProps.name === nextProps.name;
-});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cat);
 
 /***/ }),
@@ -27275,6 +27300,50 @@ var MymemoCom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().memo(f
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Hello ", name);
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MymemoCom);
+
+/***/ }),
+
+/***/ "./src/Components/Pure_CLassComponent.js":
+/*!***********************************************!*\
+  !*** ./src/Components/Pure_CLassComponent.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+var Pure_Component = /*#__PURE__*/function (_React$PureComponent) {
+  function Pure_Component() {
+    _classCallCheck(this, Pure_Component);
+    return _callSuper(this, Pure_Component, arguments);
+  }
+  _inherits(Pure_Component, _React$PureComponent);
+  return _createClass(Pure_Component, [{
+    key: "render",
+    value: function render() {
+      console.log('Rendered Pure_Component');
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, this.props.name);
+    }
+  }]);
+}((react__WEBPACK_IMPORTED_MODULE_0___default().PureComponent));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Pure_Component);
 
 /***/ })
 
